@@ -1,0 +1,43 @@
+<dbtest>
+    <connection name="simple_connection" type="ORACLE">
+        <driver>oracle.jdbc.OracleDriver</driver>
+        <username>projekt</username>
+        <password>lozinka</password>
+        <url>jdbc:oracle:thin:@localhost:1521:orcl</url>
+    </connection>
+    <tests>
+        <test name="test_simple1">
+            <cleanup_before>down_skripta.sql</cleanup_before>
+            <upscript>up_skripta.sql</upscript>
+            <test_setup>
+                INSERT INTO PRIMKE_ZG (ID, ID_DOBAVLJACA, ID_SKLADISTA, BROJ, DATUM, OPIS) VALUES (1, 1, 1, 1,
+                TO_DATE('28.12.13', 'DD.MM.RR'), 'Primka dobavljaca Podravka');
+                INSERT INTO PRIMKE_ST (ID, ID_PRIMKE, ID_ARTIKLA, KOLICINA, NABAVNA_CIJENA) VALUES (1, 1, 1, 100, 10);
+            </test_setup>
+            <procedure>SKLADISTE_BATCH.izracun</procedure>
+            <verification>
+                <verify_output>
+                    <sql>SELECT PROSJECNA_CIJENA as value FROM zalihe WHERE ID_SKLADISTA=1 AND ID_ARTIKLA=1</sql>
+                    <result>10</result>
+                </verify_output>
+                <verify_output>
+                    <sql>SELECT PROSJECNA_CIJENA as value FROM zalihe WHERE ID_SKLADISTA=1 AND ID_ARTIKLA=1</sql>
+                    <result>10</result>
+                </verify_output>
+            </verification>
+            <cleanup_after>down_skripta.sql</cleanup_after>
+        </test>
+        <test name="test_simple2">
+            <cleanup_before>down_skripta.sql</cleanup_before>
+            <upscript>up_skripta.sql</upscript>
+            <procedure>SKLADISTE_BATCH.izracun</procedure>
+            <verification>
+                <verify_output>
+                    <sql>SELECT PROSJECNA_CIJENA as value FROM zalihe WHERE ID_SKLADISTA=1 AND ID_ARTIKLA=1</sql>
+                    <result>3</result>
+                </verify_output>
+            </verification>
+            <cleanup_after>down_skripta.sql</cleanup_after>
+        </test>
+    </tests>
+</dbtest>

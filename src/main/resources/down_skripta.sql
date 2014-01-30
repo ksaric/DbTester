@@ -1,0 +1,13 @@
+DELETE FROM zalihe;
+DELETE FROM zalihe_proba;
+DELETE FROM izdatnice_st;
+DELETE FROM izdatnice_zg;
+DELETE FROM primke_st;
+DELETE FROM primke_zg;
+DELETE FROM error_log;
+DELETE FROM artikli;
+DELETE FROM mt;
+DELETE FROM skladista;
+DELETE FROM dobavljaci;
+DELETE FROM brojevi;
+COMMIT;
