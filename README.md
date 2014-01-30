@@ -10,6 +10,7 @@ REQUIRED
 ========
 
 Attach Oracle JDBC driver JAR, from either oracle installation, or download from internet.
+------------------------------------------------------------------------------------------
 
 Ideas :
     - CSV
