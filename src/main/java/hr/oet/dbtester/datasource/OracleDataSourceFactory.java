@@ -85,8 +85,8 @@ public class OracleDataSourceFactory implements DataSourceFactory {
     public static OracleDataSourceFactory createDefaultConnection() {
         final OracleDataSourceFactory oracleDataSourceFactory = new OracleDataSourceFactory();
         oracleDataSourceFactory.setDriverClassName( "oracle.jdbc.OracleDriver" );
-        oracleDataSourceFactory.setUsername( "projekt" );
-        oracleDataSourceFactory.setPassword( "lozinka" );
+        oracleDataSourceFactory.setUsername( "faksprojekt" );
+        oracleDataSourceFactory.setPassword( "faks" );
         oracleDataSourceFactory.setUrl( "jdbc:oracle:thin:@localhost:1521:orcl" );
 
         return oracleDataSourceFactory;

@@ -38,7 +38,7 @@ public class ProsjecnaCijenaKolicinaTest {
 
         oracleDbTester.cleanup( Lists.<String>newArrayList(
                 "DELETE FROM zalihe",
-                "DELETE FROM zalihe_proba",
+//                "DELETE FROM zalihe_proba",
                 "DELETE FROM izdatnice_st",
                 "DELETE FROM izdatnice_zg",
                 "DELETE FROM primke_st",
@@ -46,9 +46,10 @@ public class ProsjecnaCijenaKolicinaTest {
                 "DELETE FROM error_log",
                 "DELETE FROM artikli",
                 "DELETE FROM mt",
+                "DELETE FROM brojevi",
                 "DELETE FROM skladista",
                 "DELETE FROM dobavljaci",
-                "DELETE FROM brojevi",
+
 
                 "INSERT INTO ARTIKLI (ID, SIFRA, NAZIV) VALUES ('1', '100101', 'Krastavci 100 g')",
                 "INSERT INTO ARTIKLI (ID, SIFRA, NAZIV) VALUES ('2', '100102', 'Paprika 100 g')",
@@ -556,7 +557,7 @@ public class ProsjecnaCijenaKolicinaTest {
             @Override
             public List<String> get() {
                 return Lists.newArrayList(
-                        "SELECT KOLICINA as value FROM ERROR_LOG WHERE SKLADISTE_ID=2 AND ARTIKL_ID=3"
+                        "SELECT KOLICINA as value FROM ERROR_LOG WHERE ID_SKLADISTA=2 AND ID_ARTIKLA=3"
                 );
             }
         }, CustomString.class );
@@ -587,8 +588,8 @@ public class ProsjecnaCijenaKolicinaTest {
                 "DELETE FROM error_log",
                 "DELETE FROM artikli",
                 "DELETE FROM mt",
-                "DELETE FROM skladista",
                 "DELETE FROM brojevi",
+                "DELETE FROM skladista",
                 "COMMIT"
         ) );
 
